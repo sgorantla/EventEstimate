@@ -1,0 +1,37 @@
+filter chain of oauth2 web client
+
+1. SecurityContextPersistenceFilter
+2. LogoutFilter
+3. UsernamePasswordAuthenticationFilter
+4. BasicAuthenticationFilter
+5. RequestCacheAwareFilter
+6. SecurityContextHolderAwareRequestFilter
+7. AnonymousAuthenticationFilter
+8. SessionManagementFilter
+9. ExceptionTranslationFilter
+
+
+10. OAuth2ClientContextFilter
+    if find the resource that needs an OAuth2 access token, (how ? ) then
+    1. accessToken = OAuth2ProfileChain.obtainAccessToken(resourceThatNeedsAuthorization);
+    2. AbstractOAuth2ProfileManager.obtainAccessToken
+    3. OAuth2ProfileChain.obtainNewAccessToken
+    4. WebServerProfile.obtainNewAccessToken 
+    Method of WebServerProfile (extending OAuth2AccessTokenSupport) 
+
+    WebServerProFile.obtainNewAccessToken does
+    1). if verification code not available in OAuth2SecurityContext (where basically the conversation of client to OAuth2 server is modeled), it generates the params to run the 1st request to oauth2 server and throw redirect
+    2). once the verification code is generated, to exchange it for an access token, RestTemplate is used 
+    WebServerProFile.obtainNewAccessToken
+    OAuth2AccessTokenSupport.retrieveToken
+    RestTemplate.execute
+
+(RestTemplate has a ClientHttpRequestFactory which creates request that gets executed in a RESTful way)
+org.springframework.security.oauth2.consumer.OAuth2ClientHttpRequestFactory.createRequest(OAuth2ClientHttpRequestFactory.java:36)
+org.springframework.http.client.support.HttpAccessor.createRequest(HttpAccessor.java:76)
+org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:434)
+org.springframework.web.client.RestTemplate.execute(RestTemplate.java:415)
+org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:213)
+org.springframework.security.oauth.examples.ctctOAuth2WebClient.impl.SparklrServiceImpl.getSparklrPhotoIds(SparklrServiceImpl.java:35)
+
+11. FilterSecurityInterceptor

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:security="http://www.springframework.org/schema/security"  
+  xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+              http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
+              http://www.springframework.org/schema/security/oauth2 http://www.springframework.org/schema/security/spring-security-oauth2.xsd" xmlns:aop="http://www.springframework.org/schema/aop">
+
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="location" value="classpath:sparklr.properties"/>
+  </bean>
+  
+  
+  
+  
+
+  
+  <security:http  auto-config='true' access-denied-page="/login.jsp" entry-point-ref="authPoint"  >
+    <security:intercept-url pattern="/sparklr/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+    <security:intercept-url pattern="/facebook/**" access="ROLE_USER" />
+    <security:intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+
+    <security:form-login authentication-failure-url="/login.jsp" 
+                         default-target-url="/index.jsp" 
+                         login-page="/login.jsp" 
+                         login-processing-url="/login.do"/>
+    <security:logout logout-success-url="/index.jsp" logout-url="/logout.do"/>
+  </security:http>
+  
+  
+  
+  
+  <security:authentication-manager alias="userAuthenticationManager">
+    <security:authentication-provider>
+      <security:user-service>
+        <security:user name="marissa" password="wombat" authorities="ROLE_USER" />
+        <security:user name="sam" password="kangaroo" authorities="ROLE_USER" />
+      </security:user-service>
+    </security:authentication-provider>
+  </security:authentication-manager>
+  
+    
+    <bean id="authPoint" class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingAuthenticationEntryPoint" >
+        <property name="loginFormUrl" value="/error.jsp" />
+    </bean> 
+
+
+<!--
+<alias name="org.springframework.security.filterChainProxy" alias="springSecurityFilterChain" />
+<bean id="org.springframework.security.filterChainProxy" class="org.springframework.security.web.FilterChainProxy">
+        <security:filter-chain-map path-type="ant">
+           <security:filter-chain pattern="/**"
+                                  filters="securityContextPersistenceFilter, requestCacheAwareFilter,                                                                                 securityContextHolderAwareRequestFilter,  anonymousAuthenticationFilter,                                                                   sessionManagementFilter, exceptionTranslationFilter,                                                                                       oauth2ClientContextFilter, filterSecurityInterceptor"/>
+        </security:filter-chain-map>
+</bean>
+
+
+
+<bean id="oauth2ClientContextFilter" class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingOAuth2ClientContextFilter" >
+    <property name="profileManager" >
+        <bean class="org.springframework.security.oauth2.consumer.OAuth2ProfileChain" >
+           <constructor-arg>
+            <list>
+                <bean class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingWebServerProfile" />
+            </list>
+           </constructor-arg>
+        </bean>
+    </property>
+</bean>
+
+
+<bean id="securityContextPersistenceFilter" class="org.springframework.security.web.context.SecurityContextPersistenceFilter" >
+    <property name="forceEagerSessionCreation" value="true" />
+    <property name="securityContextRepository" ref="sessionRepository" />
+</bean>
+    
+  
+
+<bean id="requestCacheAwareFilter"  class="org.springframework.security.web.savedrequest.RequestCacheAwareFilter" />
+    
+<bean id="securityContextHolderAwareRequestFilter" class="org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter" />
+
+<bean id="anonymousAuthenticationFilter" class="org.springframework.security.web.authentication.AnonymousAuthenticationFilter" >
+    <property name="userAttribute" value="anonymousUser, ROLE_ANONYMOUS" />
+    <property name="key"           value="CTCT" />
+</bean>
+
+<bean id="sessionManagementFilter"       class="org.springframework.security.web.session.SessionManagementFilter" >
+    <constructor-arg ref="sessionRepository" />
+</bean>
+<bean id="sessionRepository" class="org.springframework.security.web.context.HttpSessionSecurityContextRepository">
+    <property name="disableUrlRewriting" value="true" />
+</bean>
+
+    
+<bean id="exceptionTranslationFilter"    class="org.springframework.security.web.access.ExceptionTranslationFilter" >
+    <property name="authenticationEntryPoint" ref="authPoint" />
+</bean>
+   
+<bean id="authPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint" >
+    <property name="loginFormUrl" value="/login.jsp" />
+</bean>   
+
+   
+   <bean id="filterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor" >
+       <property name="authenticationManager" ref="userAuthenticationManager" />
+       <property name="accessDecisionManager" ref="accessDecisionManager" />
+       <property name="securityMetadataSource" >
+           <security:filter-security-metadata-source>
+            <security:intercept-url pattern="/sparklr/**"        access="ROLE_ANONYMOUS"  />
+            <security:intercept-url pattern="/facebook/**"       access="ROLE_ANONYMOUS" />
+            <security:intercept-url pattern="/**"                access="ROLE_ANONYMOUS" />    
+           </security:filter-security-metadata-source>
+           </property>
+   </bean>
+       
+ <bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+     <property name="allowIfAllAbstainDecisions" value="false" />
+     <property name="decisionVoters">
+         <list>
+             <bean class="org.springframework.security.access.vote.RoleVoter" />
+         </list>
+         </property>
+     </bean>
+ 
+ -->
+
+
+
+
+  <!--apply the oauth client context-->
+  <oauth:client token-services-ref="oauth2TokenServices" profile-manager-ref="ctctProfileManager" />
+  
+  <bean id="ctctProfileManager" class="org.springframework.security.oauth2.consumer.OAuth2ProfileChain" >
+           <constructor-arg>
+            <list>
+                <bean class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingWebServerProfile" />
+            </list>
+           </constructor-arg>
+  </bean>
+    
+
+  <bean id="oauth2TokenServices" class="org.springframework.security.oauth2.consumer.token.InMemoryOAuth2ClientTokenServices"/>
+
+  <!--define an oauth 2 resource for sparklr --> 
+<oauth:resource id="ggvm" type="authorization_code" clientId="e1b2deac-5e61-41cb-8c7e-ed8edc2ddf4a" clientSecret="212a41c7445c4cc38e67aa3a02a1ccba"
+			accessTokenUri="https://gchengvm1.roving.com/oauth2/oauth/token"
+                  userAuthorizationUri="https://gchengvm1.d1.constantcontact.com/oauth2/oauth/siteowner/authorize"/>
+
+<oauth:resource id="d1" type="authorization_code" clientId="e1b2deac-5e61-41cb-8c7e-ed8edc2ddf4a" clientSecret="212a41c7445c4cc38e67aa3a02a1ccba"
+			accessTokenUri="https://oauth2.d1.constantcontact.com/oauth2/oauth/token"
+                  userAuthorizationUri="https://oauth2.d1.constantcontact.com/oauth2/oauth/siteowner/authorize"/>
+
+
+<oauth:resource id="l1" type="authorization_code" clientId="5c141e66-e320-4bc1-be92-11ba6134308b" clientSecret="b9328d9bed7a47c4ba407a46c3032c2d"
+                        accessTokenUri="https://oauth2.l1.constantcontact.com/oauth2/oauth/token"
+                  userAuthorizationUri="https://oauth2.l1.constantcontact.com/oauth2/oauth/siteowner/authorize"/>
+                  
+<oauth:resource id="f1" type="authorization_code" clientId="f9115893-80f6-43cc-9274-613652dd4346" clientSecret="b4130c2ca7054fba90e88c34d461ff0b"
+			accessTokenUri="https://oauth2.f1.constantcontact.com/oauth2/oauth/token"
+                  userAuthorizationUri="https://oauth2.f1.constantcontact.com/oauth2/oauth/siteowner/authorize"/>
+
+
+<oauth:resource id="f2" type="authorization_code" clientId="d5428f28-0346-43f8-af33-3815e376be95" clientSecret="a888366f0ec94e8cb9587fef6a3ee37f"
+                        accessTokenUri="https://oauth2.f2.constantcontact.com/oauth2/oauth/token"
+                  userAuthorizationUri="https://oauth2.f2.constantcontact.com/oauth2/oauth/siteowner/authorize"/>                  
+
+
+<oauth:resource id="s1" type="authorization_code" clientId="384c6fd3-aca4-470e-bebe-e71d88f62150" clientSecret="e16dea7fdf99454ab796ba600772ba16"
+                        accessTokenUri="https://oauth2.s1.constantcontact.com/oauth2/oauth/token"
+                  userAuthorizationUri="https://oauth2.s1.constantcontact.com/oauth2/oauth/siteowner/authorize"/>
+
+<oauth:resource id="prod" type="authorization_code" clientId="654b6ed5-0102-4c82-87e8-e1a122c02417" clientSecret="803bc9ef7d4a437ea19f3cec8451b1d8"
+			accessTokenUri="https://oauth2.constantcontact.com/oauth2/oauth/token"
+                  userAuthorizationUri="https://oauth2.constantcontact.com/oauth2/oauth/siteowner/authorize"/>
+
+
+
+
+  <!--define an oauth 2 resource for facebook. according to the facebook docs, the 'clientId' is the App ID, and the 'clientSecret' is the App Secret -->
+  <oauth:resource id="facebook" type="authorization_code" clientId="162646850439461" clientSecret="560ad91d992d60298ae6c7f717c8fc93"
+                  bearerTokenMethod="query" accessTokenUri="https://graph.facebook.com/oauth/access_token"
+                  userAuthorizationUri="https://www.facebook.com/dialog/oauth"/>
+</beans>
