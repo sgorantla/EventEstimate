@@ -7,11 +7,6 @@
 </head>
 <body>    
 <p>
-<a href="serverflow.jsp">OAUTH 2 Server Flow Example</a>
-</p>
-<p>
-<a href="clientflow.jsp">OAUTH 2 Implicit Grant (Client Flow) Example 1</a>
-</br>
 <a href="clientflow2.jsp">OAUTH 2 Implicit Grant (Client Flow) Example 2 (using MVC)</a>
 </p>
 </body>

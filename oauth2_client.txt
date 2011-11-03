@@ -32,6 +32,6 @@ org.springframework.http.client.support.HttpAccessor.createRequest(HttpAccessor.
 org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:434)
 org.springframework.web.client.RestTemplate.execute(RestTemplate.java:415)
 org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:213)
-org.springframework.security.oauth.examples.ctctOAuth2WebClient.impl.SparklrServiceImpl.getSparklrPhotoIds(SparklrServiceImpl.java:35)
+
 
 11. FilterSecurityInterceptor

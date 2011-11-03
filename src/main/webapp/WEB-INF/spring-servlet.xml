@@ -16,9 +16,6 @@
   <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
     <property name="mappings">
       <props>
-        <prop key="/sparklr/list">sparklrController</prop>
-        <prop key="/sparklr/photo/*">photoController</prop>
-        <prop key="/facebook/info.jsp">facebookController</prop>
         <prop key="/ClientFlowMVC">clientFlowController</prop>
       </props>
     </property>
@@ -28,154 +25,12 @@
   <bean id="clientFlowController" class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.mvc.ClientFlowController">
     <property name="clientFlowService" ref="clientFlowService"/>
   </bean>
-  
-  <bean id="sparklrController" class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.mvc.SparklrController">
-    <property name="sparklrService" ref="sparklrService"/>
-  </bean>
 
-  <bean id="facebookController" class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.mvc.FacebookController">
-    <property name="facebookRestTemplate">
-      <bean class="org.springframework.security.oauth2.consumer.OAuth2RestTemplate">
-        <constructor-arg ref="facebook"/>
-        <property name="messageConverters">
-          <list>
-            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
-              <property name="supportedMediaTypes">
-                <list>
-                  <bean class="org.springframework.http.MediaType">
-                    <!--facebook sends its json as text/javascript for some reason-->
-                    <constructor-arg value="text"/>
-                    <constructor-arg value="javascript"/>
-                  </bean>
-                  <bean class="org.springframework.http.MediaType">
-                    <constructor-arg value="application"/>
-                    <constructor-arg value="json"/>
-                  </bean>
-                </list>
-              </property>
-            </bean>
-          </list>
-        </property>
-      </bean>
-    </property>
-    <property name="tokenServices" ref="oauth2TokenServices"/>
-  </bean>
 
-  <bean id="photoController" class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.mvc.SparklrPhotoController">
-    <property name="sparklrService" ref="sparklrService"/>
-  </bean>
-  
-  
-  
   <bean id="realRequestFactory" class="org.springframework.http.client.SimpleClientHttpRequestFactory" />
 
-	<bean id="clientFlowService" class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.impl.ClientFlowServiceImpl" />
+ <bean id="clientFlowService" class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.impl.ClientFlowServiceImpl" />
     
 
-    <bean id="sparklrService" class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.impl.SparklrServiceImpl">
-        <property name="urls">
-            <bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-                <property name="location">
-                    <value>classpath:sparklr.properties</value>
-                </property>
-            </bean>
-        </property>
-        <property name="sparklrPhotoURLPattern" value="${sparklrPhotoURLPattern}"/>
-        <property name="oauth2RestTemplates">
-            <map>
-                <entry key="ggvm">
-                    <bean class="org.springframework.security.oauth2.consumer.OAuth2RestTemplate">
-                        <constructor-arg>
-                            <!-- the oauth2 request factory also needs a oauth2 resource -->
-                            <!-- as the method implementing ClientRequestFactory does not have arg for resource -->
-                            <!-- so has generate 1 for each resource -->
-                            <bean class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingOAuth2ClientHttpRequestFactory" >
-                                <constructor-arg ref="realRequestFactory" />
-                                <constructor-arg ref="ggvm" />
-                            </bean>
-                        </constructor-arg>
-                        <constructor-arg ref="ggvm"/>
-                    </bean>                           
-                </entry>
-                
-                
-                <entry key="d1">
-                    <bean class="org.springframework.security.oauth2.consumer.OAuth2RestTemplate">
-                        <constructor-arg index="0" >
-                            <bean class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingOAuth2ClientHttpRequestFactory" >
-                                <constructor-arg index="0" ref="realRequestFactory" />
-                                <constructor-arg index="1" ref="d1" />
-                            </bean>
-                        </constructor-arg>                        
-                        <constructor-arg index="1" ref="d1"/>
-                    </bean>    
-                </entry>
-                
-                
-                <entry key="f1">
-                    <bean class="org.springframework.security.oauth2.consumer.OAuth2RestTemplate">
-                        <constructor-arg>
-                            <bean class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingOAuth2ClientHttpRequestFactory" >
-                                <constructor-arg ref="realRequestFactory" />
-                                <constructor-arg ref="f1" />
-                            </bean>
-                        </constructor-arg>
-                        <constructor-arg ref="f1"/>
-                    </bean>    
-                </entry>
-        
-        
-                <entry key="f2">
-                    <bean class="org.springframework.security.oauth2.consumer.OAuth2RestTemplate">
-                        <constructor-arg>
-                            <bean class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingOAuth2ClientHttpRequestFactory" >
-                                <constructor-arg ref="realRequestFactory" />
-                                <constructor-arg ref="f2" />
-                            </bean>
-                        </constructor-arg>                          
-                        <constructor-arg ref="f2"/>
-                    </bean>    
-                </entry>
-                
-                <entry key="l1">
-                    <bean class="org.springframework.security.oauth2.consumer.OAuth2RestTemplate">
-                        <constructor-arg>
-                            <bean class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingOAuth2ClientHttpRequestFactory" >
-                                <constructor-arg ref="realRequestFactory" />
-                                <constructor-arg ref="l1" />
-                            </bean>
-                        </constructor-arg>                          
-                        <constructor-arg ref="l1"/>
-                    </bean>    
-                </entry>
-                
-                
-                <entry key="s1">
-                    <bean class="org.springframework.security.oauth2.consumer.OAuth2RestTemplate">
-                        <constructor-arg>
-                            <bean class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingOAuth2ClientHttpRequestFactory" >
-                                <constructor-arg ref="realRequestFactory" />
-                                <constructor-arg ref="s1" />
-                            </bean>
-                        </constructor-arg>                          
-                        <constructor-arg ref="s1"/>
-                    </bean>    
-                </entry>
-                
-                <entry key="prod">
-                    <bean class="org.springframework.security.oauth2.consumer.OAuth2RestTemplate">
-                        <constructor-arg>
-                            <bean class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingOAuth2ClientHttpRequestFactory" >
-                                <constructor-arg ref="realRequestFactory" />
-                                <constructor-arg ref="prod" />
-                            </bean>
-                        </constructor-arg>                          
-                        <constructor-arg ref="prod"/>
-                    </bean>    
-                </entry>
-        </map>
-    </property>
-    <property name="tokenServices" ref="oauth2TokenServices"/>
-  </bean>
 
 </beans>

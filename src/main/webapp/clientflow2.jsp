@@ -15,7 +15,6 @@
 function poptastic(id) {
 	var url = "ClientFlowMVC?env=" + id;
 	
-	alert(url);
 	if (window.location.hash.length == 0) {
 		window.open(url, 'name');
 	}
