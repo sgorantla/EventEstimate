@@ -6,6 +6,7 @@ import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
@@ -27,6 +28,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,13 +49,13 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping(value = "events")
-public class EventCollectionController {
+@RequestMapping(value = "contacts")
+public class ContactCollectionController {
     @Autowired
     RestTemplate restTemplate;
     private static final String WS_URL_PREFIX = "https://api.constantcontact.com/ws/customers/";
     @RequestMapping(value="/tab", method= RequestMethod.GET)
-    protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse httpServletResponse) throws Exception {
+    protected String handleRequestInternal(Model model ,HttpServletRequest request) throws Exception {
 
         String accessToken = request.getParameter("access_token");
         String userName = request.getParameter("userName");
@@ -62,10 +64,12 @@ public class EventCollectionController {
 
         Feed contactSource = restTemplate.getForObject(contactUrl, Feed.class);
         List<Entry> contacts = contactSource.getEntries();
+        List<Contact> contactObjects = new ArrayList<Contact>(contacts.size());
         for (Entry contact : contacts) {
             List<Content> contactContents = contact.getContents();
             Content contactContent = contactContents.get(0);
             String contentXML = contactContent.getValue();
+            
             final SAXParserFactory sax = SAXParserFactory.newInstance();
             sax.setNamespaceAware(false);
             final XMLReader reader;
@@ -74,14 +78,14 @@ public class EventCollectionController {
             } catch (SAXException e) {
                 throw new RuntimeException(e);
             }
-            InputSource is = new InputSource(contentXML);
+            InputSource is = new InputSource(new StringReader(contentXML));
             SAXSource source = new SAXSource(reader, is);
-            JAXBContext context = JAXBContext.newInstance();
+            JAXBContext context = JAXBContext.newInstance(Contact.class);
             javax.xml.bind.Unmarshaller unmarshaller = context.createUnmarshaller();
-
-            JAXBElement<Contact> contactObject = (JAXBElement<Contact>)unmarshaller.unmarshal(source);
-            System.out.println("!!!!" + contactObject.getValue().getEmailAddress());
+            JAXBElement<Contact> contactObject = (JAXBElement<Contact>)unmarshaller.unmarshal(source, Contact.class);
+            contactObjects.add(contactObject.getValue());
         }
-        return new ModelAndView("cf_redir_page");
+        model.addAttribute("contacts", contactObjects);
+        return "contact_list";
     }
 }
