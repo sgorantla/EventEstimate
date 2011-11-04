@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client;
+package com.eventestimator.oauth2Client;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client;
+package com.eventestimator.oauth2Client;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +21,6 @@ import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.oauth2.common.DefaultOAuth2SerializationService;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import org.springframework.security.oauth2.consumer.OAuth2ProtectedResourceDetails;
@@ -30,8 +29,6 @@ import org.springframework.security.oauth2.consumer.OAuth2SecurityContextHolder;
 import org.springframework.security.oauth2.consumer.UserRedirectRequiredException;
 import org.springframework.security.oauth2.consumer.webserver.WebServerProfile;
 import org.springframework.security.oauth2.consumer.webserver.WebServerProfileResourceDetails;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 
 

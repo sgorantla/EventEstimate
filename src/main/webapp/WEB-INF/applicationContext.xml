@@ -42,7 +42,7 @@
   </security:authentication-manager>
   
     
-    <bean id="authPoint" class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingAuthenticationEntryPoint" >
+    <bean id="authPoint" class="com.eventestimator.oauth2Client.RovingAuthenticationEntryPoint" >
         <property name="loginFormUrl" value="/error.jsp" />
     </bean> 
 
@@ -54,7 +54,7 @@
   <bean id="ctctProfileManager" class="org.springframework.security.oauth2.consumer.OAuth2ProfileChain" >
            <constructor-arg>
             <list>
-                <bean class="org.springframework.security.oauth.examples.ctctOAuth2WebClient.oauth2Client.RovingWebServerProfile" />
+                <bean class="com.eventestimator.oauth2Client.RovingWebServerProfile" />
             </list>
            </constructor-arg>
   </bean>
@@ -96,9 +96,20 @@
 
 
 
+    <bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller" />
 
   <!--define an oauth 2 resource for facebook. according to the facebook docs, the 'clientId' is the App ID, and the 'clientSecret' is the App Secret -->
   <oauth:resource id="facebook" type="authorization_code" clientId="162646850439461" clientSecret="560ad91d992d60298ae6c7f717c8fc93"
                   bearerTokenMethod="query" accessTokenUri="https://graph.facebook.com/oauth/access_token"
                   userAuthorizationUri="https://www.facebook.com/dialog/oauth"/>
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+    <property name="messageConverters">
+        <list>
+            <bean id="atomFeedHttpMessageConverter" class="org.springframework.http.converter.feed.AtomFeedHttpMessageConverter">
+                <property name="supportedMediaTypes" value="application/atom+xml" />
+            </bean>
+        </list>
+    </property>
+    </bean>
 </beans>

@@ -1,4 +1,4 @@
-package org.springframework.security.oauth.examples.ctctOAuth2WebClient;
+package com.eventestimator;
 
 import java.io.InputStream;
 import java.util.List;

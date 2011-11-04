@@ -1,31 +1,28 @@
-package org.springframework.security.oauth.examples.ctctOAuth2WebClient.mvc;
+package com.eventestimator.mvc;
 
-import org.springframework.security.oauth.examples.ctctOAuth2WebClient.ClientFlowService;
+import com.eventestimator.ClientFlowService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * @author Ryan Heaton
- */
+@Controller
+@RequestMapping(value = "clientflow")
 public class ClientFlowController extends AbstractController {
 
+  @Autowired
   private ClientFlowService clientFlowService;
   
-  
+  @RequestMapping(value="/tab", method= RequestMethod.GET)
   protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
     
 	  return new ModelAndView("clientflow", "appId", 
-            getClientFlowService().getAppId( request.getParameter("env")));
+            clientFlowService.getAppId( "prod"));
   }
 
-  public ClientFlowService getClientFlowService() {
-    return clientFlowService;
-  }
-
-  public void setClientFlowService(ClientFlowService clientFlowService) {
-    this.clientFlowService = clientFlowService;
-  }
 }

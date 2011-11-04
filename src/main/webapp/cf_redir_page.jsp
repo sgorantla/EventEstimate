@@ -3,26 +3,23 @@
 <head>
 <title>Client Flow Example TEST</title>
 	<script>		
-		var env = "<%=request.getParameter("env")%>";
-		if (env == "prod")
-			env = '.';
-		else
-			env = "." + env + ".";
-		
-		var path = "https://api" + env + "constantcontact.com/ws/customers/geeksquad/lists?";
+		var userName = "<%=request.getParameter("userName")%>";
 
-		// this is the code to run once we are redirected 
+
+		var path = "http://localhost:9999/ctctOAuth2WebClient/events/tab?userName="+userName;
+
+		// this is the code to run once we are redirected
 		var accessToken = window.location.hash.substring(1);
-		/// grab the "env" cookie and use it in the path ...		
+		/// grab the "env" cookie and use it in the path ...
 		var queryParams = [ accessToken ];
 		var query = queryParams.join('&');
-		var url = path + query;
-		
+		var url = path + "&" + query;
+
 		alert("Oauth login redirection successful ! \n\nRequesting API resource : " + url + "\nusing acess token ...");
-		
+
 		function getList()
 		{
-			window.location = url;
+			window.opener.location = url;
 		}
 
 	</script>

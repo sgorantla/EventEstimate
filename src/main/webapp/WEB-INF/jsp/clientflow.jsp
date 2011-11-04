@@ -7,17 +7,10 @@
   <title>I'm going to redirect once I get the application id from the controller...</title>
 <script type=javascript>
 <%
-String environment = new String(request.getParameter("env"));
-String envParam = environment;
-if (environment.equalsIgnoreCase("prod"))
-	environment = ".";
-else
-	environment = "." + environment + ".";
-
-String url = new String("https://oauth2" + environment + 
-		"constantcontact.com/oauth2/oauth/siteowner/authorize?client_id=" + request.getAttribute("appId") +
+String userName = request.getParameter("userName");
+String url = new String("https://oauth2.constantcontact.com/oauth2/oauth/siteowner/authorize?client_id=" + request.getAttribute("appId") +
 		"&response_type=token&redirect_uri=" +
-		URLEncoder.encode("http://localhost:9999/ctctOAuth2WebClient/cf_redir_page.jsp?env=" + envParam));
+		URLEncoder.encode("http://localhost:9999/ctctOAuth2WebClient/cf_redir_page.jsp?userName="+userName));
 %>
 </head>
 </script>

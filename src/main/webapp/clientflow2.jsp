@@ -12,8 +12,13 @@
   <title>OAUTH 2 Implicit Grant (Client Flow) Example 2 (using MVC)</title>
 
 <script type="text/javascript">
-function poptastic(id) {
-	var url = "ClientFlowMVC?env=" + id;
+function poptastic() {
+    var userName = document.getElementById("userName").value;
+    if (!userName) {
+        alert("please enter name");
+        return false;
+    }
+	var url = "clientflow/tab?userName="+userName;
 	
 	if (window.location.hash.length == 0) {
 		window.open(url, 'name');
@@ -26,20 +31,16 @@ function poptastic(id) {
 <div id="container">
 <table>
     <ul id="mainlinks">
-      <%
-        String data[] = { "prod","s1","l1","f1","f2","d1" };
-      
-      	for (int i = 0; i < 6; i++) {
-      %>	      
-      		<tr>	
+        <tr>
+             <td>
+                 <label for="userName">User Name:</label>  <input type="text" name="userName" id="userName" maxlength="50" />
+        </td>
+        </tr>
+      		<tr>
       		<td>
-      		  <a href="javascript:poptastic('<%=data[i]%>');">Geeksquad Lists on <%=data[i] %>
-      		  </a>
+                  <button name="getContacts" onclick="poptastic(); return false;">Find Contacts</button>
       		</td>
       		</tr>
-      <%
-      	}
-      %>
     </ul>
 </table>
 

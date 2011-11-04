@@ -1,7 +1,8 @@
-package org.springframework.security.oauth.examples.ctctOAuth2WebClient.impl;
+package com.eventestimator.impl;
 
 import java.util.HashMap;
-import org.springframework.security.oauth.examples.ctctOAuth2WebClient.ClientFlowService;
+
+import com.eventestimator.ClientFlowService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
