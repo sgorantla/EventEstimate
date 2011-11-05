@@ -27,7 +27,7 @@
   <div id="content">
     <c:if test="${!empty sessionScope.SPRING_SECURITY_LAST_EXCEPTION}">
       <h1>Woops!</h1>
-
+		${contact.firstName}
       <p class="error">Your login attempt was not successful. Exception: 
      (<%= session.getAttribute(AbstractAuthenticationProcessingFilter.SPRING_SECURITY_LAST_EXCEPTION_KEY).getClass().getName() %>)<br>:
      (<%= ((AuthenticationException) session.getAttribute(AbstractAuthenticationProcessingFilter.SPRING_SECURITY_LAST_EXCEPTION_KEY)).getMessage() %>)</p>

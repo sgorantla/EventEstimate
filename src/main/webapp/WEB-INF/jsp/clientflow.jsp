@@ -18,5 +18,7 @@ String url = new String("https://oauth2.constantcontact.com/oauth2/oauth/siteown
 <%
 response.sendRedirect(url);
 %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script>
 </body>
 </html>
