@@ -6,7 +6,7 @@
 		var userName = "<%=request.getParameter("userName")%>";
 
 
-		var path = "http://localhost:9999/ctctOAuth2WebClient/contacts/tab?userName="+userName;
+		var path = "http://localhost:9999/eventEstimator/contacts/tab?userName="+userName;
 
 		// this is the code to run once we are redirected
 		var accessToken = window.location.hash.substring(1);

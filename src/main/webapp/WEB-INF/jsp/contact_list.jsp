@@ -8,8 +8,7 @@
 </head>
 <body>
 <table>
-
-<c:forEach var="contact" items="${model.contacts}" varStatus="loopStatus">
+<c:forEach var="contact" items="${contacts}" varStatus="loopStatus">
         <tr>
             <td>
                 ${contact.emailAddress}

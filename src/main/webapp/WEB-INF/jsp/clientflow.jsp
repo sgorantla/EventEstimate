@@ -10,7 +10,7 @@
 String userName = request.getParameter("userName");
 String url = new String("https://oauth2.constantcontact.com/oauth2/oauth/siteowner/authorize?client_id=" + request.getAttribute("appId") +
 		"&response_type=token&redirect_uri=" +
-		URLEncoder.encode("http://localhost:9999/ctctOAuth2WebClient/cf_redir_page.jsp?userName="+userName));
+		URLEncoder.encode("http://localhost:9999/eventEstimator/cf_redir_page.jsp?userName="+userName));
 %>
 </head>
 </script>

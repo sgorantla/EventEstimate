@@ -4,8 +4,8 @@
 
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.springframework.security.oauth</groupId>
-    <artifactId>ctctOAuth2WebClient2</artifactId>
+    <groupId>com.eventestimator</groupId>
+    <artifactId>EventEstimator</artifactId>
     <packaging>war</packaging>
     <name>OAuth for Spring Security - ctctOAuth2WebClient2 (OAuth 2 Consumer Example)</name>
     <version>1.0.0.BUILD-SNAPSHOT</version>
@@ -400,7 +400,7 @@
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
                 <configuration>
-                    <contextPath>/ctctOAuth2WebClient</contextPath>
+                    <contextPath>/eventEstimator</contextPath>
                     <connectors>
                         <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
                             <port>9999</port>
