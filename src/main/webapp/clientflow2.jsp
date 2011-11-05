@@ -44,15 +44,6 @@ function poptastic() {
     </ul>
 </table>
 
-  <div id="content">
-    <c:if test="${!empty sessionScope.SPRING_SECURITY_LAST_EXCEPTION}">
-      <h1>Woops!</h1>
-
-      <p class="error">Your login attempt was not successful. (<%= ((AuthenticationException) session.getAttribute(AbstractAuthenticationProcessingFilter.SPRING_SECURITY_LAST_EXCEPTION_KEY)).getMessage() %>)</p>
-    </c:if>
-    <c:remove scope="session" var="SPRING_SECURITY_LAST_EXCEPTION"/>
-
-  </div>
 </div>
 </body>
 </html>
