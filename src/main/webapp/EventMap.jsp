@@ -20,20 +20,20 @@
     };
     var map = new google.maps.Map(document.getElementById("map_canvas"),
         myOptions);
-     
-	  var marker = new google.maps.Marker({
-	      position: latlng, 
-	      map: map, 
-	      title:"Hello World!"
-		  });
-
-	  var image = 'images/android.png';
-		var latlnggg = new google.maps.LatLng(40.726345, -74);
-		var beachMarker = new google.maps.Marker({
-	      position: latlnggg,
-	      map: map,
-	      icon: image
-	  });
+      
+  var marker = new google.maps.Marker({
+      position: latlng, 
+      map: map, 
+      title:"Hello World!"
+	  }); 
+	  
+	var image = 'images/android.png';
+	var latlnggg = new google.maps.LatLng(40.726345, -74);
+	var beachMarker = new google.maps.Marker({
+      position: latlnggg,
+      map: map,
+      icon: image
+  });
   }
 
 </script>
