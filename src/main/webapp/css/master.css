@@ -158,7 +158,7 @@ input.find-venue {
 .step-wizard {
   max-width:560px;
   margin:0 auto;
-  margin-top:100px;
+  margin-top:0px;
   padding:10px;
 }
 .step-wizard.step-1 {
@@ -214,7 +214,6 @@ input.find-venue {
   display:block;
 }
 .overlay li img.fb {
-  position:absolute;
   top:40px;
 }
 .overlay .no-decoration {

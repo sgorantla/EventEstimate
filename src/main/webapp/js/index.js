@@ -23,7 +23,7 @@ var EventTemplate = {
         t.endPointUrl = "/scui-webapp/campaign/json/createCampaign";
 
         // form submit event listener.
-        $("getStarted").click($.proxy(t.createCampaign, t));
+        $("#getStarted").click($.proxy(t.showContactOptions, t));
     },
 
     /**
@@ -33,39 +33,38 @@ var EventTemplate = {
      *   c) takes the user to the editor if this is the first page they are linking
      *   d) if the user has linked pages already redirects them to the dashboard.
      */
-    showContactOptions: function() {
+    showContactOptions: function(e) {
 
         // prevent the default action.
         e.preventDefault();
 
-        var target = $(e.target),
-                templateId = target.attr("data-tid"),
-                t = this,
-                endPoint = t.endPointUrl,
-                requestData = {
-                "pageId": templatePickerConfig.fbPageId,
-              "templateId": templateId,
-              "pageName": templatePickerConfig.fbPageName,
-              "pageCategory": templatePickerConfig.fbPageCategory,
-              "avatarUrl": templatePickerConfig.fbAvatarUrl,
-              "connectedAccount": templatePickerConfig.connectedAccount
-            },
+        var container = $("<div/>");
+        container.css({"height":"400px"});
 
-            requestConfig = {
-                type: "POST",
-                url: endPoint,
-                contentType: "application/x-www-form-urlencoded",
-                data: requestData,
-                dataType: "json",
-                context: t,
-                success: t.processCreateCampaignResponse,
-                error: t.processCreateCampaignFailureResponse
-            };
+        container.load("steps/step1.j", function(result){
+            container.find(".close").click(function() {
+               $.unblockUI();
+            });
 
-        t.isTemplateGated = target.attr("data-gated");
+            container.find("#ctctConnectButton").click(function(){
+                container.load("steps/step2.j");
+            });
 
-        // make the request.
-        $.ajax(requestConfig);
+            $(".callout").hide();
+            $.blockUI({
+                css: {
+                    border: 'none',
+                    padding: '15px',
+                    backgroundColor: 'transparent',
+                    opacity: .5,
+                    color: '#fff',
+                    centerY: true,
+                    centerX: true,
+                    width: '35%'
+                },
+                message : container
+            });
+        })
 
     },
 
@@ -73,17 +72,15 @@ var EventTemplate = {
      * Processes a successful http response for create welcome page request.
      *
      */
-    processCreateCampaignResponse: function(response) {
+    processStep: function(response) {
         var success = response.status;
+        alert(response)
+    },
 
-        if (success) {
-            this.openWelcomePageEditor(response.docCollectionId, response.socialCampaignId);
-        } else {
-            //(TODO): show appropriate error message to the user.
-            alert("oops the request failed with errorCode: " + response.errorCode);
-        }
+    processError: function(response) {
+        alert("ERROR == " + response);
     }
 
 };
 
-$(document).ready(TemplatePicker.init());
+$(document).ready(EventTemplate.init());

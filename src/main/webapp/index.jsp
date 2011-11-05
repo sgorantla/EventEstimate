@@ -11,13 +11,24 @@
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans:700' rel='stylesheet' type='text/css'>
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <style>
+        html {
+          background: url(/eventEstimator/images/map-bg.jpg) no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+          margin:0; padding:0;
+        }
+
+    </style>
 </head>
 <body>
   
   <div class="wrap">
     
     <div class="head">
-      <div class="head-inner">
+      <div class="head-inner style="width:600px;">
         <h1>VenueSpot: the easiest and most interactive way to locate, book &amp; promote your next business event.</h1>
       </div>
 
@@ -52,6 +63,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script>
 <script src="http://malsup.com/jquery/block/jquery.blockUI.js"></script>
+<script src="js/index.js"></script>
 
 </body>
 </html>
