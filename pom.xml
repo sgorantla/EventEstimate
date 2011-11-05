@@ -123,6 +123,12 @@
             <version>${spring.version}</version>
         </dependency>
 
+    <dependency>
+      <groupId>javax.jms</groupId>
+      <artifactId>jms</artifactId>
+      <version>1.1</version>
+    </dependency>
+    
 
         <!-- AspectJ -->
         <!-- needed for webclassloader May be only used by TC server but better leave it there-->
@@ -318,6 +324,11 @@
             <id>oauth.googlecode.net</id>
             <url>http://oauth.googlecode.com/svn/code/maven/</url>
         </repository>
+    <repository>
+      <id>repository.jboss.org-public</id>
+      <name>JBoss.org Maven repository</name>
+      <url>https://repository.jboss.org/nexus/content/groups/public</url>
+    </repository>  
     </repositories>
 
     <pluginRepositories>
