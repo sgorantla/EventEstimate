@@ -6,14 +6,14 @@
     </div>
 
 	<div class="overlay step-1">
-	      <img src="images/ic-x.png" class="close">
+	      <img src="/eventEstimator/images/ic-x.png" class="close">
 	      <ul>
 	        <li><a href="#"><img src="/eventEstimator/images/ctct-logo.png"></a></li>
-	        <li><img src="images/fb-logo.png" class="fb"></li>
+	        <li><img src="/eventEstimator/images/fb-logo.png" class="fb"></li>
 	      </ul>
 	      <ul class="no-decoration">
-	        <li><img src="images/google-logo.png"></li>
-	        <li><img src="images/twitter-logo.png"></li>
+	        <li><img src="/eventEstimator/images/google-logo.png"></li>
+	        <li><img src="/eventEstimator/images/twitter-logo.png"></li>
 	      </ul>
 	</div>
 </div>

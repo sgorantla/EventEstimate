@@ -5,7 +5,7 @@
       <h3><span>Step 2:</span> Choose Your Event Type</h3>
     </div>
     <div class="overlay step-2">
-      <img src="/images/ic-x.png" class="close">
+      <img src="/eventEstimator/images/ic-x.png" class="close">
       <form method="POST" class="venue-form">
         <label for="location">Event Location:</label>
         <input type="text" placeholder="-City/Town-" name="location" id="location">
