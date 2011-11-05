@@ -1,9 +1,7 @@
 package com.eventestimator.mvc;
 
 import com.eventestimator.model.Contact;
-import com.sun.syndication.feed.atom.Content;
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.atom.Feed;
+import com.sun.syndication.feed.atom.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

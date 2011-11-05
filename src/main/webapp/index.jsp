@@ -1,13 +1,57 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
 <head>
-  <link href="<c:url value="/main.css"/>" rel="stylesheet" type="text/css"/>
-  <title>CTCT OAUTH 2 Examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>VenueSpot: The easiest and most interactive way to locate, book and promote your next business event.</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Dumont, Dan">
+	<link href="css/master.css" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:700' rel='stylesheet' type='text/css'>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 </head>
-<body>    
-<p>
-<a href="clientflow2.jsp">OAUTH 2 Implicit Grant (Client Flow) Example 2 (using MVC)</a>
-</p>
+<body>
+  
+  <div class="wrap">
+    
+    <div class="head">
+      <div class="head-inner">
+        <h1>VenueSpot: the easiest and most interactive way to locate, book &amp; promote your next business event.</h1>
+      </div>
+
+    </div>
+    
+    <div class="callout">
+      <div class="callout-inner">
+        <h2><span>VenueSpot</span> is the easiest and most interactive way to locate, book &amp; promote your next business event.</h2>
+        <div class="left">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id orci sem. Velit ut interdum malesuada, justo tellus sagittis arcu, vel sagittis diam.</p>
+
+          <ul>
+            <li><span class="ic-transport"></span><a href="#">Transportation</a></li>
+            <li><span class="ic-analytics"></span><a href="#">Location Analytics</a></li>
+            <li><span class="ic-food"></span><a href="#">Custom Food Choice</a></li>
+          </ul>
+        </div>
+        <a id="getStarted" class="get-started" href="#">Let's Get Started!</a>
+
+      </div>
+    </div>
+    <div class="push"></div> <!-- for sticky footer -->    
+  </div>
+  
+  <div class="footer">
+    <div class="footer-inner">
+      <p>Copyright © 2009-2011 VenueSpot. All Rights Reserved.</p>
+    </div>
+
+  </div>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script>
+<script src="http://malsup.com/jquery/block/jquery.blockUI.js"></script>
+
 </body>
 </html>
