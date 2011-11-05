@@ -6,22 +6,22 @@
     </div>
     <div class="overlay step-2">
       <img src="/eventEstimator/images/ic-x.png" class="close">
-      <form method="POST" class="venue-form">
+      <form method="POST" action="eventEstimator/steps/step1.j" class="venue-form">
         <label for="location">Event Location:</label>
-        <input type="text" placeholder="-City/Town-" name="location" id="location">
-        <select id="state">
+        <input type="text" placeholder="-City/Town-" name="city" id="location">
+        <select id="state" name="state">
           <optgroup>
             <option>-State/Zip-</option>
           </optgroup>
         </select>
         <label for="category">Event Category:</label>
-        <select id="category">
+        <select id="category" name="category">
           <optgroup>
             <option>-Category-</option>
           </optgroup>
         </select>
         <label for="category">Food Type:</label>
-        <select id="food">
+        <select id="food" name="food">
           <optgroup>
             <option>-Food Type-</option>
           </optgroup>

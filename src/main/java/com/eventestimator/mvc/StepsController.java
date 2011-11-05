@@ -2,6 +2,7 @@ package com.eventestimator.mvc;
 
 import com.eventestimator.model.Contact;
 import com.eventestimator.model.Event;
+import com.eventestimator.model.EventInformation;
 import com.sun.syndication.feed.atom.Content;
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import com.google.gson.*;
 
 /**
  * Copyright 2008 by Constant Contact Inc.,
@@ -57,13 +59,22 @@ public class StepsController {
     @Autowired
     RestTemplate restTemplate;
     
+    @RequestMapping(value="/step1.j", method= RequestMethod.GET)
+    protected String step1Get(Model model ,HttpServletRequest request) throws Exception {
+        return "Step1Partial";
+    }
+    
+    @RequestMapping(value="/step1.j", method= RequestMethod.POST)
+    protected String step1Post(Model model ,HttpServletRequest request) throws Exception {
+    	String eventInformationJson = request.getParameter("EventInformation");
+    	Gson gson = new Gson();
+    	EventInformation eventInformation = gson.fromJson(eventInformationJson, EventInformation.class);
+        return "Step1Partial";
+    }
+    
     @RequestMapping(value="/step2.j", method= RequestMethod.GET)
-    protected String handleRequestInternal(Model model ,HttpServletRequest request) throws Exception {
+    protected String step2Get(Model model ,HttpServletRequest request) throws Exception {
         return "Step2Partial";
     }
     
-    @RequestMapping(value="/step1.j", method= RequestMethod.GET)
-    protected String handleRequestInternalTwo(Model model ,HttpServletRequest request) throws Exception {
-        return "Step1Partial";
-    }
 }
