@@ -43,6 +43,7 @@ img, object, embed {
   height: auto !important;
   height: 100%;
   margin: 0 auto -40px; /* the bottom margin is the negative value of the footer's height */
+  width: 100%;
 }
 .callout {
   background:#000;
