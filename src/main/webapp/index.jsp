@@ -33,7 +33,7 @@
 		.categories-bg {background:#161616; padding:15px 25px 25px; border-top:1px solid #494948; border-top:1px solid #363636}
 		.bdr-btm {border-bottom:1px dotted #3e3e3e}
         html {
-          background: url(/eventEstimator/images/map-bg.jpg) no-repeat center center fixed;
+          background: url(images/map-bg.jpg) no-repeat center center fixed;
           -webkit-background-size: cover;
           -moz-background-size: cover;
           -o-background-size: cover;
