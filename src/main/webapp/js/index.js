@@ -38,7 +38,7 @@ var EventTemplate = {
         // prevent the default action.
         e.preventDefault();
 
-        var container = $("<div/>");
+        var container = $("<div id=\"overlayWin\"/>");
         container.css({"height":"400px"});
 
         container.load("steps/step1.j", function(result){
@@ -46,9 +46,16 @@ var EventTemplate = {
                $.unblockUI();
             });
 
+//            container.find("#ctctConnectButton").click(function(){
+//                container.load("steps/step2.j");
+//            });
+
             container.find("#ctctConnectButton").click(function(){
-                container.load("steps/step2.j");
-            });
+            var winRef = window.open(
+            "steps/login_win.j",
+            '_blank',
+            'scrollbars=no,menubar=no,height=600,width=800,resizable=yes,scrollbars=yes,toolbar=no,location=no,status=no'
+        );            });
 
             $(".callout").hide();
             $.blockUI({
@@ -66,6 +73,10 @@ var EventTemplate = {
             });
         })
 
+    },
+
+    stepToForm : function (e) {
+      $("#overlayWin").load("steps/step2.j");
     },
 
     /**

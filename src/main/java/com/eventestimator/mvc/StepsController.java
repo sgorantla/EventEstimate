@@ -76,5 +76,11 @@ public class StepsController {
     protected String step2Get(Model model ,HttpServletRequest request) throws Exception {
         return "Step2Partial";
     }
-    
+
+    @RequestMapping(value="/login_win.j", method= RequestMethod.GET)
+    protected String stepToLogin(Model model ,HttpServletRequest request) throws Exception {
+        return "login_window";
+    }
+
+
 }

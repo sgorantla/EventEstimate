@@ -15,6 +15,7 @@ import org.xml.sax.XMLReader;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.parsers.ParserConfigurationException;
@@ -52,7 +53,7 @@ public class ContactCollectionController {
     @Autowired
     RestTemplate restTemplate;
     private static final String WS_URL_PREFIX = "https://api.constantcontact.com/ws/customers/";
-    @RequestMapping(value="/tab", method= RequestMethod.GET)
+    @RequestMapping(value="/tab.j", method= RequestMethod.GET)
     protected String handleRequestInternal(Model model ,HttpServletRequest request) throws Exception {
 
         String accessToken = request.getParameter("access_token");
@@ -83,6 +84,9 @@ public class ContactCollectionController {
             JAXBElement<Contact> contactObject = (JAXBElement<Contact>)unmarshaller.unmarshal(source, Contact.class);
             contactObjects.add(contactObject.getValue());
         }
+        HttpSession session = request.getSession();
+        session.setAttribute("accessToke", accessToken);
+        session.setAttribute("contacts", contactObjects);
         model.addAttribute("contacts", contactObjects);
         return "contact_list";
     }

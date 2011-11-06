@@ -6,7 +6,7 @@
 		var userName = "<%=request.getParameter("userName")%>";
 
 
-		var path = "http://localhost:9999/eventEstimator/contacts/tab?userName="+userName;
+		var path = "http://localhost:9999/eventEstimator/contacts/tab.j?userName="+userName;
 
 		// this is the code to run once we are redirected
 		var accessToken = window.location.hash.substring(1);
@@ -15,11 +15,12 @@
 		var query = queryParams.join('&');
 		var url = path + "&" + query;
 
-		alert("Oauth login redirection successful ! \n\nRequesting API resource : " + url + "\nusing acess token ...");
+//		alert("Oauth login redirection successful ! \n\nRequesting API resource : " + url + "\nusing acess token ...");
 
 		function getList()
 		{
-			window.opener.location = url;
+			window.opener.EventTemplate.stepToForm();
+            window.close();
 		}
 
 	</script>
