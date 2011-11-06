@@ -8,10 +8,13 @@
 	<meta name="generator" content="TextMate http://macromates.com/">
 	<meta name="author" content="Dumont, Dan">
 	<link href="css/master.css" rel="stylesheet" type="text/css">
-  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:700' rel='stylesheet' type='text/css'>
-  <script type="text/javascript"src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/mapfunstions.js"></script>
+	<link href="css/reset.css" rel="stylesheet" media="all" type="text/css"/>
+  	<link href="css/common.css" media="all" rel="stylesheet" type="text/css"/>
+  	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:700' rel='stylesheet' type='text/css'>
+  	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:700' rel='stylesheet' type='text/css'>
+  	<script type="text/javascript"src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  	<script type="text/javascript" src="/js/mapfunstions.js"></script>
  <script type="text/javascript">
   </script>
     <style>
@@ -41,7 +44,7 @@
       <div class="callout-inner">
         <h2><span>VenueSpot</span> is the easiest and most interactive way to locate, book &amp; promote your next business event.</h2>
         <div class="left">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id orci sem. Velit ut interdum malesuada, justo tellus sagittis arcu, vel sagittis diam.</p>
+          <p>VenueSpot will guide you on locating the best venue and local businesses to support your event, for you and your customers and partners</p>
 
           <ul>
             <li><span class="ic-transport"></span><a href="#">Transportation</a></li>

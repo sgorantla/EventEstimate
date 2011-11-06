@@ -11,7 +11,7 @@ var geocoder;
 var map;
 var geoData;
 
-var contactLocations = ["New York, NY", "Queens, NY"];
+var contactLocations = ["New York, NY", "920 broadway st, NY"];
      	             
 function initialize() {
   geocoder = new google.maps.Geocoder();
@@ -23,26 +23,29 @@ function initialize() {
 
   for (var i = 0; i < contactLocations.length; i++) {
 	 var address = contactLocations[i];
-  	GeoAddress(address);
+	 GeoSetAddress(map, address);
   }
 }
 	
-function GeoAddress(address) {
-		var geoLocale;
-	  	geocoder.geocode( { 'address': address}, function(results, status) {
-	    if (status == google.maps.GeocoderStatus.OK) {
-	      map.setCenter(results[0].geometry.location);
-	      var marker = new google.maps.Marker({
-	          map: map,
-	          position: results[0].geometry.location
-	          geoLocale.push(address,"","",);
-	      	  geoData.push(geoLocale);
-	     	});
-	    } else {
-	      alert("Geocode was not successful for the following reason: " + status);
-	    }
-	  });
+function GeoSetAddress(map, address) {
+	var geoLocale;
+	var image = new google.maps.MarkerImage('images/spot_contact.png');
+	geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          icon: image,
+          position: results[0].geometry.location
+//	          geoLocale.push(address,"","",);
+//	      	  geoData.push(geoLocale);
+     	});
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+  });
 }
+
 	
 function codeAddress() {
   var address = document.getElementById("address").value;
@@ -62,10 +65,6 @@ function codeAddress() {
 </script>
 </head>
 <body onload="initialize()">
- <div id="map_canvas" style="width: 320px; height: 480px;"></div>
-  <div>
-    <input id="address" type="textbox" value="Sydney, NSW">
-    <input type="button" value="Encode" onclick="codeAddress()">
-  </div>
+ <div id="map_canvas" style="width: 520px; height: 680px;"></div>
 </body>
 </html>
