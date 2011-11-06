@@ -12,8 +12,8 @@
 <!-- Categories -->
       <div class="categories-bg bdr-btm">
         <ul class="venue-details mbm">
-          <li class="bdr-btm"><span class="venue-title">Event Category:</span> <span class="txt-small right">Arts & Entertainment</span></li>
-          <li class="bdr-btm"><span class="venue-title">Food Type:</span> <span class="txt-small right">Modern American</span></li>
+          <li class="bdr-btm"><span class="venue-title">Event Category:</span> <span class="txt-small right">Conference</span></li>
+          <li class="bdr-btm"><span class="venue-title">Food Type:</span> <span class="txt-small right">Chinese</span></li>
         </ul>
         
         <!-- Food Options -->
@@ -32,11 +32,11 @@
         </ul>
         <ul class="venue-details spot">
           <li class="bdr-btm">
-            <span class="spot-name">Train: Grand Central</span>
-            <span class="venue-location right">1.3 Miles</span>
+            <span class="spot-name">Train: Penn Station</span>
+            <span class="venue-location right">.7 Miles</span>
           </li>
           <li class="">
-            <span class="venue-location">15 Vanderbilt Ave<br />New York, NY 10017</span>
+            <span class="venue-location">8th Ave. <br />New York, NY 10017</span>
           </li>
         </ul>
         <ul class="venue-details mbm">
