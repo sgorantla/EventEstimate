@@ -14,28 +14,21 @@
   	<script type="text/javascript"src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
   	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   	<script type="text/javascript" src="/js/mapfunstions.js"></script>
- <script type="text/javascript">
-  function initializemap() {
-    var latlng = new google.maps.LatLng(40.716668, -74);
-    var myOptions = {
-      zoom: 13,
-      center: latlng,
-      mapTypeControl: false,
-      mapTsypeControlOptions: {
-        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-      },
-    zoomControl: true,
-    zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.SMALL
-      },
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-//     setVenueLocationMarker(map, venueLocations);
-//     setContactMarkers(map, contactLocations);
-  }
-  </script>
-    <style>
+	<style type="text/css">
+		a {color:#FFF}
+		a.btn-2 {background:#febc00 url(images/btn-bg.gif) repeat-x left top; border:1px solid #252525; color:#613a02; font-size:24px; font-weight:bold; padding:12px 30px; text-decoration:none; text-shadow:0 1px 0 rgba(255,255,255,.6); -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; display:block}
+		.so-ctr {position:absolute; right:0; height:100%; min-height:100%; max-height:100%; width:336px;background:#f1bf25; background:#000; background:rgba(0,0,0,.8)}
+		.so-inner {padding:25px}
+		.venue-feature {width:198px; float:right}
+		.venue-details ul { list-style-type:none; margin:0 0 25px 0; padding:0}
+		.venue-details li { padding:8px 0; margin:0}
+		.venue-title {font-size:16px; color:#FFF}
+		.venue-location {font-size:12px; color:#797979}
+		.venue-price {color:#fecf00; font-size:20px; font-weight:bold}
+		.spot {background:#202020; padding:10px 15px ; margin-bottom:2px}
+		.spot-name {font-size:14px; font-weight:bold; color:#fecf00}
+		.categories-bg {background:#161616; padding:15px 25px 25px; border-top:1px solid #494948; border-top:1px solid #363636}
+		.bdr-btm {border-bottom:1px dotted #3e3e3e}
         html {
           background: url(/eventEstimator/images/map-bg.jpg) no-repeat center center fixed;
           -webkit-background-size: cover;
@@ -44,14 +37,14 @@
           background-size: cover;
           margin:0; padding:0;
         }
-
-    </style>
+	</style>
 </head>
-<body onload="initializemap()">
+<body onload="EventTemplate.initializeMap()">
 
+   <div id="googleMap" style="z-index:0; height:100%;display:none;"></div>
   <div class="wrap">
-       <div id="map_canvas" style="z-index:0; height:100%"></div>
-    <div class="head">
+	<div id="map_canvas" style="z-index:0; height:100%;"></div>
+    <div class="head" style="position:absolute:top:0;">
       <div class="head-inner style="width:600px;">
         <h1>VenueSpot: the easiest and most interactive way to locate, book &amp; promote your next business event.</h1>
       </div>

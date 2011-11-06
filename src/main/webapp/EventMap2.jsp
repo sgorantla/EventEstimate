@@ -96,6 +96,7 @@ a.btn-2 {background:#febc00 url(images/btn-bg.gif) repeat-x left top; border:1px
 </style>
 <body onload="initialize()">
       <div id="map_canvas" style="z-index:0; height:100%"></div>
+     <div id="container">
     <div class="head" style="position:absolute;z-index:1;top:0;">
       <div class="head-inner" style="width:1600px;">
         <h1>VenueSpot: the easiest and most interactive way to locate, book &amp; promote your next business event.</h1>
@@ -156,7 +157,7 @@ a.btn-2 {background:#febc00 url(images/btn-bg.gif) repeat-x left top; border:1px
           Don't like your spot? <a href="#">Start over</a>
         </div>
     </div>
-
+</div>
 
 </body>
 </html>

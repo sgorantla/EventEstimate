@@ -15,6 +15,28 @@ var CONST = {
  */
 var EventTemplate = {
 
+	map: null,
+
+  initializeMap: function() { 
+	  var latlng = new google.maps.LatLng(40.716668, -74);
+	    var myOptions = {
+	      zoom: 13,
+	      center: latlng,
+	      mapTypeControl: false,
+	      mapTsypeControlOptions: {
+	        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+	      },
+	    zoomControl: true,
+	    zoomControlOptions: {
+	        style: google.maps.ZoomControlStyle.SMALL
+	      },
+	      mapTypeId: google.maps.MapTypeId.ROADMAP
+	    }
+	    map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+	//     setVenueLocationMarker(map, venueLocations);
+	//     setContactMarkers(map, contactLocations);
+  },
+  
     /**
      * Initializer called on document ready.
      */
@@ -75,12 +97,22 @@ var EventTemplate = {
     },
 
     stepToForm : function (e) {
-      $("#overlayWin").load("steps/step2.j");
+      $("#overlayWin").load("steps/step2.j", function(){
+      	var step2 =this;
+      	$(this).find(".find-venue").click(function(){
+      		$(step2).hide();
+      	 	$("#container").hide();
+      	 	$("#googleMap").show();
+      		EventTemplate.showStats();
+      		EventTemplate.getContacts();
+      	
+      	});
+      	
+      
+      });
       $("#overlayWin").find(".close").click(function() {
                $.unblockUI();
             });
-//        this.getContacts("userName");
-//        this.showStats();
     },
 
     getContacts : function(userName) {
@@ -93,7 +125,10 @@ var EventTemplate = {
              data: fbPageDetails,
              dataType: "json",
              success: function(data, status, req) {
-                 alert(data);
+             	for(var i = 0; i < data.length; i++){
+             		var address = data[i].addr1 + "," + data[i].city + " " + data[i].state;
+	             	GeoSetAddress(this.map, address);
+             	}
              },
              error: function(data, status, req) {
                  // nothing to handle here.
@@ -103,7 +138,9 @@ var EventTemplate = {
     },
 
     showStats: function() {
-      $("body").load("steps/step3.j", function(result){});
+    	var div = $("<div/>");
+    	div.load("steps/step3.j", function(result){});
+    	$("body").append(div);
     },
     /**
      * Processes a successful http response for create welcome page request.
