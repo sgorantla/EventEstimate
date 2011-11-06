@@ -32,7 +32,7 @@ var EventTemplate = {
 	      },
 	      mapTypeId: google.maps.MapTypeId.ROADMAP
 	    }
-	    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	    map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
 	//     setVenueLocationMarker(map, venueLocations);
 	//     setContactMarkers(map, contactLocations);
   },
@@ -101,6 +101,8 @@ var EventTemplate = {
       	var step2 =this;
       	$(this).find(".find-venue").click(function(){
       		$(step2).hide();
+      	 	$("#container").hide();
+      	 	$("#googleMap").show();
       		EventTemplate.showStats();
       		EventTemplate.getContacts();
       	
