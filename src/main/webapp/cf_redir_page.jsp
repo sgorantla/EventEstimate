@@ -5,8 +5,10 @@
 	<script>		
 		var userName = "<%=request.getParameter("userName")%>";
 
+//        var port = window.location.hostname( port.indexOf( ":" ) + 1 );
+        var path = 'http://' + window.location.host + '/contacts/tab.j?userName='+userName;
 
-		var path = "http://localhost:9999/eventEstimator/contacts/tab.j?userName="+userName;
+//		var path = "http://localhost:9999/eventEstimator/contacts/tab.j?userName="+userName;
 
 		// this is the code to run once we are redirected
 		var accessToken = window.location.hash.substring(1);

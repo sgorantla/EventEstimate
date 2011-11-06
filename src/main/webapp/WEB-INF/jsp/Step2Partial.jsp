@@ -5,8 +5,8 @@
       <h3><span>Step 2:</span> Choose Your Event Type</h3>
     </div>
     <div class="overlay step-2">
-      <img src="/eventEstimator/images/ic-x.png" class="close">
-      <form method="POST" action="eventEstimator/steps/step1.j" class="venue-form">
+      <img src="images/ic-x.png" class="close">
+      <form method="POST" action="steps/step1.j" class="venue-form">
         <label for="location">Event Location:</label>
         <input type="text" placeholder="-City/Town-" name="city" id="location">
         <select id="state" name="state">
