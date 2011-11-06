@@ -27,7 +27,7 @@
           </optgroup>
         </select>
       <div class="venue">
-        <input type="submit" value="Find Venue Spot!" class="find-venue">
+        <input type="button" value="Find Venue Spot!" class="find-venue">
       </div>
       </form>
     </div>

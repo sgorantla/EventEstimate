@@ -13,25 +13,6 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <script type="text/javascript" src="/js/mapfunstions.js"></script>
  <script type="text/javascript">
-  function initializemap() {
-    var latlng = new google.maps.LatLng(40.716668, -74);
-    var myOptions = {
-      zoom: 13,
-      center: latlng,
-      mapTypeControl: false,
-      mapTsypeControlOptions: {
-        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-      },
-    zoomControl: true,
-    zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.SMALL
-      },
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-//     setVenueLocationMarker(map, venueLocations);
-//     setContactMarkers(map, contactLocations);
-  }
   </script>
     <style>
         html {
@@ -45,7 +26,7 @@
 
     </style>
 </head>
-<body onload="initializemap()">
+<body onload="EventTemplate.initializeMap()">
 
   <div class="wrap">
        <div id="map_canvas" style="z-index:0; height:100%"></div>
