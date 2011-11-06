@@ -14,7 +14,8 @@
   	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:700' rel='stylesheet' type='text/css'>
   	<script type="text/javascript"src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
   	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-  	<script type="text/javascript" src="/js/mapfunstions.js"></script>
+  	
+  	<script type="text/javascript" src="js/mapfunctions.js"></script>
 	<style type="text/css">
 		a {color:#FFF}
 		a.btn-2 {background:#febc00 url(images/btn-bg.gif) repeat-x left top; border:1px solid #252525; color:#613a02; font-size:24px; font-weight:bold; padding:12px 30px; text-decoration:none; text-shadow:0 1px 0 rgba(255,255,255,.6); -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; display:block}
@@ -40,16 +41,16 @@
         }
 	</style>
 </head>
-<body onload="EventTemplate.initializeMap()">
+<body onload="">
 
-   <div id="googleMap" style="z-index:0; height:100%;display:none;"></div>
+<div id="googleMap" style="z-index:0; height:100%;width:100%;display:none;"></div>
+
   <div class="wrap">
 	<div id="map_canvas" style="z-index:0; height:100%;"></div>
-    <div class="head" style="position:absolute:top:0;">
-      <div class="head-inner style="width:600px;">
+    <div class="head" style="top:0;">
+      <div class="head-inner style="width:1600px;">
         <h1>VenueSpot: the easiest and most interactive way to locate, book &amp; promote your next business event.</h1>
       </div>
-
     </div>
     
     <div class="callout">

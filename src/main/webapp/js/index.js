@@ -16,8 +16,10 @@ var CONST = {
 var EventTemplate = {
 
 	map: null,
+	geocoder: null,
 
   initializeMap: function() { 
+	  EventTemplate.geocoder = new google.maps.Geocoder();
 	  var latlng = new google.maps.LatLng(40.716668, -74);
 	    var myOptions = {
 	      zoom: 13,
@@ -98,13 +100,23 @@ var EventTemplate = {
 
     stepToForm : function (e) {
       $("#overlayWin").load("steps/step2.j", function(){
-      	var step2 =this;
       	$(this).find(".find-venue").click(function(){
-      		$(step2).hide();
-      	 	$("#container").hide();
-      	 	$("#googleMap").show();
+      		$.unblockUI();
+      		
+      	 	EventTemplate.initializeMap();
       		EventTemplate.showStats();
       		EventTemplate.getContacts();
+      		
+      	 	$(".callout").hide();
+      	 	$("#map_canvas").hide();
+      	 	$("html").css("background", "none");
+      	 	$(".wrap").removeClass("wrap");
+      	 	$(".head").css("width","1800px");
+      	 	$(".head").css("position","absolute");
+      	 	$("#googleMap").css("width", "101%");
+      	 	$("#googleMap").show();
+      	 	$("#googleMap").css("top", "50px");
+      	 	$("#googleMap").trigger("click");
       	
       	});
       	
@@ -126,7 +138,7 @@ var EventTemplate = {
              dataType: "json",
              success: function(data, status, req) {
              	for(var i = 0; i < data.length; i++){
-             		var address = data[i].addr1 + "," + data[i].city + " " + data[i].state;
+             		var address = data[i].addr1 + "," + data[i].city + " city";
 	             	GeoSetAddress(this.map, address);
              	}
              },
