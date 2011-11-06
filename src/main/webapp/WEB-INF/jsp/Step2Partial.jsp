@@ -26,9 +26,9 @@
             <option>-Food Type-</option>
           </optgroup>
         </select>
-      </form>
       <div class="venue">
         <input type="submit" value="Find Venue Spot!" class="find-venue">
       </div>
+      </form>
     </div>
 </div>
