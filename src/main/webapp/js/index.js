@@ -34,7 +34,7 @@ var EventTemplate = {
 	      },
 	      mapTypeId: google.maps.MapTypeId.ROADMAP
 	    }
-	    map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+	    EventTemplate.map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
 	//     setVenueLocationMarker(map, venueLocations);
 	//     setContactMarkers(map, contactLocations);
   },
@@ -137,9 +137,12 @@ var EventTemplate = {
              data: fbPageDetails,
              dataType: "json",
              success: function(data, status, req) {
+	       		setVenueLocationMarker(EventTemplate.map, "22 East, 40th St New York City");
              	for(var i = 0; i < data.length; i++){
+             		if($.trim(data[i].addr1) == "")
+             			continue;
              		var address = data[i].addr1 + "," + data[i].city + " city";
-	             	GeoSetAddress(this.map, address);
+	             	GeoSetAddress(EventTemplate.map, address);
              	}
              },
              error: function(data, status, req) {
@@ -148,7 +151,18 @@ var EventTemplate = {
          });
 
     },
+    
+	getVenue : function() {
+       YelpLocationService.searchBusinessByCoords("venues", null, {latitude:40.71668, longitude:-74}, 10, 5, "yelpResultHandler");
 
+   	},
+
+   handleVenue: function() {
+       if (YelpLocationService.isResponseSuccess(response)) {
+       		var bus = response.businesses[0];
+       }
+   },
+   
     showStats: function() {
     	var div = $("<div/>");
     	div.load("steps/step3.j", function(result){});

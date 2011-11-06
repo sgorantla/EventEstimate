@@ -15,6 +15,7 @@
   	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   	
   	<script type="text/javascript" src="js/mapfunctions.js"></script>
+  	<script type="text/javascript" src="js/YelpLocationService.js"></script>
 	<style type="text/css">
 		a {color:#FFF}
 		a.btn-2 {background:#febc00 url(images/btn-bg.gif) repeat-x left top; border:1px solid #252525; color:#613a02; font-size:24px; font-weight:bold; padding:12px 30px; text-decoration:none; text-shadow:0 1px 0 rgba(255,255,255,.6); -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; display:block}

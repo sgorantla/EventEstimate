@@ -39,17 +39,19 @@ function setContactMarkers(map, locations) {
 	  }
 
 
-function setVenueLocationMarker(map, venueLocation) {
-	  var imageVenue = new google.maps.MarkerImage('images/spot_venue.png');
-	  for (var i = 0; i < venueLocation.length; i++) {
-	    var venuePoint = venueLocation[i];
-	    var myLatLng = new google.maps.LatLng(venuePoint[1], venuePoint[2]);
-	    var marker = new google.maps.Marker({
-	        position: myLatLng,
-	        map: map,
-	        icon: imageVenue,
-	        title: venuePoint[0],
-	        zIndex: venuePoint[3]
-	    });
-	  }
+function setVenueLocationMarker(map, address) {
+	  var image = new google.maps.MarkerImage('images/spot_venue.png');
+		var geoLocale;
+		EventTemplate.geocoder.geocode( { 'address': address}, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+	      map.setCenter(results[0].geometry.location);
+	      var marker = new google.maps.Marker({
+	          map: map,
+	          icon: image,
+	          position: results[0].geometry.location
+	     	});
+	    } else {
+	      alert("Geocode was not successful for the following reason: " + status);
+	    }
+	  });
 	  }
