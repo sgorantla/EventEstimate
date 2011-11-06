@@ -11,7 +11,7 @@ var geocoder;
 var map;
 var geoData;
 
-var contactLocations = ["New York, NY", "Queens, NY"];
+var contactLocations = ["New York, NY", "920 broadway st, NY"];
      	             
 function initialize() {
   geocoder = new google.maps.Geocoder();
@@ -23,7 +23,7 @@ function initialize() {
 
   for (var i = 0; i < contactLocations.length; i++) {
 	 var address = contactLocations[i];
-  	GeoAddress(address);
+	 GeoSetAddress(map, address);
   }
 }
 	
@@ -65,10 +65,6 @@ function codeAddress() {
 </script>
 </head>
 <body onload="initialize()">
- <div id="map_canvas" style="width: 320px; height: 480px;"></div>
-  <div>
-    <input id="address" type="textbox" value="Sydney, NSW">
-    <input type="button" value="Encode" onclick="codeAddress()">
-  </div>
+ <div id="map_canvas" style="width: 520px; height: 680px;"></div>
 </body>
 </html>
