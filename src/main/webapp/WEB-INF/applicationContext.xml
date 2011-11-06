@@ -50,9 +50,9 @@
     
   <bean id="oauth2TokenServices" class="org.springframework.security.oauth2.consumer.token.InMemoryOAuth2ClientTokenServices"/>
 
-<oauth:resource id="prod" type="authorization_code" clientId="654b6ed5-0102-4c82-87e8-e1a122c02417" clientSecret="803bc9ef7d4a437ea19f3cec8451b1d8"
-			accessTokenUri="https://oauth2.constantcontact.com/oauth2/oauth/token"
-                  userAuthorizationUri="https://oauth2.constantcontact.com/oauth2/oauth/siteowner/authorize"/>
+<oauth:resource id="prod" type="authorization_code" clientId=" bfe53385-0b89-4a8c-bc4d-e2753f991580" clientSecret=" 371fc2166fc849f59d8c30057b534696"
+           accessTokenUri="https://oauth2.constantcontact.com/oauth2/oauth/token"
+                 userAuthorizationUri="https://oauth2.constantcontact.com/oauth2/oauth/siteowner/authorize"/>
 
     <bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller" />
 

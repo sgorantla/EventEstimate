@@ -2,9 +2,9 @@
       <div class="so-inner clearfix">
         <img class="left ptm" src="images/venue_placeholder.gif">
       <ul class="venue-feature venue-details">
-        <li class="venue-title">General Assembly</li>
-        <li class="venue-location bdr-btm">Javits Center<br />NEW YORK, NY 10016</li>
-        <li class="venue-price bdr-btm">$1099.00</li>
+        <li class="venue-title">Javits Convention Center</li>
+        <li class="venue-location bdr-btm">655 West 34th St.<br />New York City, NY 10016</li>
+        <li class="venue-price bdr-btm">$ Not Found</li>
         <li>Venue Rating   4 Stars</li>
       </ul>
       </div>

@@ -77,7 +77,7 @@ var EventTemplate = {
             var winRef = window.open(
             "steps/login_win.j",
             '_blank',
-            'scrollbars=no,menubar=no,height=600,width=800,resizable=yes,scrollbars=yes,toolbar=no,location=no,status=no'
+            'scrollbars=no,menubar=no,height=600,width=1000,resizable=yes,scrollbars=yes,toolbar=no,location=no,status=no'
         );            });
 
             $(".callout").hide();
@@ -137,7 +137,7 @@ var EventTemplate = {
              data: fbPageDetails,
              dataType: "json",
              success: function(data, status, req) {
-	       		setVenueLocationMarker(EventTemplate.map, "22 East, 40th St New York City");
+	       		setVenueLocationMarker(EventTemplate.map, "655 West 34th St. New York City");
              	for(var i = 0; i < data.length; i++){
              		if($.trim(data[i].addr1) == "")
              			continue;
