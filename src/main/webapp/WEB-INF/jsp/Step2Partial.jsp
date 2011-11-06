@@ -12,7 +12,7 @@
         <select id="state" name="state">
           <optgroup>
             <option>-State/Zip-</option>
-            <option>-New York/10010</option>
+            <option>New York/10010</option>
           </optgroup>
         </select>
         <label for="category">Event Category:</label>
