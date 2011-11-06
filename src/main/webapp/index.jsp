@@ -9,8 +9,30 @@
 	<meta name="author" content="Dumont, Dan">
 	<link href="css/master.css" rel="stylesheet" type="text/css">
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans:700' rel='stylesheet' type='text/css'>
-
+  <script type="text/javascript"src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/mapfunstions.js"></script>
+ <script type="text/javascript">
+  function initializemap() {
+    var latlng = new google.maps.LatLng(40.716668, -74);
+    var myOptions = {
+      zoom: 13,
+      center: latlng,
+      mapTypeControl: false,
+      mapTsypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+      },
+    zoomControl: true,
+    zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.SMALL
+      },
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+//     setVenueLocationMarker(map, venueLocations);
+//     setContactMarkers(map, contactLocations);
+  }
+  </script>
     <style>
         html {
           background: url(/eventEstimator/images/map-bg.jpg) no-repeat center center fixed;
@@ -23,10 +45,10 @@
 
     </style>
 </head>
-<body>
-  
+<body onload="initializemap()">
+
   <div class="wrap">
-    
+       <div id="map_canvas" style="z-index:0; height:100%"></div>
     <div class="head">
       <div class="head-inner style="width:600px;">
         <h1>VenueSpot: the easiest and most interactive way to locate, book &amp; promote your next business event.</h1>
