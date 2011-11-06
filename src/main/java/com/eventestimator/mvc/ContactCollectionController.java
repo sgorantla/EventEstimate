@@ -1,8 +1,12 @@
 package com.eventestimator.mvc;
 
 import com.eventestimator.model.Contact;
+import com.eventestimator.model.ContactEntry;
 import com.sun.syndication.feed.atom.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,8 +54,10 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "contacts")
 public class ContactCollectionController {
-    @Autowired
-    RestTemplate restTemplate;
+    private static final String WS_DOMAIN = "https://api.constantcontact.com";
+
+    private final RestTemplate restTemplate = new RestTemplate();
+
     private static final String WS_URL_PREFIX = "https://api.constantcontact.com/ws/customers/";
     @RequestMapping(value="/tab.j", method= RequestMethod.GET)
     protected String handleRequestInternal(Model model ,HttpServletRequest request) throws Exception {
@@ -61,14 +67,34 @@ public class ContactCollectionController {
         String eventUrl = WS_URL_PREFIX + userName + "/events?access_token="+accessToken;
         String contactUrl = WS_URL_PREFIX + userName + "/contacts?access_token="+accessToken;
 
+        HttpSession session = request.getSession();
+        session.setAttribute("accessToken", accessToken);
+        session.setAttribute("userName", userName);
+        return "contact_list";
+    }
+
+    @RequestMapping(value="/json.j", method= RequestMethod.GET)
+    protected ResponseEntity<Object> getContacts(Model model ,HttpServletRequest request) throws Exception {
+
+        HttpSession session = request.getSession();
+        String userName = (String)session.getAttribute("userName");
+        String accessToken = (String)session.getAttribute("accessToken");
+        String contactUrl = WS_URL_PREFIX + userName + "/contacts?access_token="+accessToken;
         Feed contactSource = restTemplate.getForObject(contactUrl, Feed.class);
         List<Entry> contacts = contactSource.getEntries();
         List<Contact> contactObjects = new ArrayList<Contact>(contacts.size());
         for (Entry contact : contacts) {
-            List<Content> contactContents = contact.getContents();
-            Content contactContent = contactContents.get(0);
-            String contentXML = contactContent.getValue();
-            
+
+            Link link = (Link)contact.getOtherLinks().get(0);
+
+            String linkHref = link.getHref();
+            String contentXML = restTemplate.getForObject(WS_DOMAIN + linkHref + "?access_token=" + accessToken, String.class);
+//            List<Content> contactContents = contactEntry.getBody().getContents();
+//            List<Content> contactContents = contactEntry.getContents();
+//
+//            Content contactContent = contactContents.get(0);
+//            String contentXML = contactContent.getValue();
+
             final SAXParserFactory sax = SAXParserFactory.newInstance();
             sax.setNamespaceAware(false);
             final XMLReader reader;
@@ -79,15 +105,15 @@ public class ContactCollectionController {
             }
             InputSource is = new InputSource(new StringReader(contentXML));
             SAXSource source = new SAXSource(reader, is);
-            JAXBContext context = JAXBContext.newInstance(Contact.class);
+            JAXBContext context = JAXBContext.newInstance(ContactEntry.class);
             javax.xml.bind.Unmarshaller unmarshaller = context.createUnmarshaller();
-            JAXBElement<Contact> contactObject = (JAXBElement<Contact>)unmarshaller.unmarshal(source, Contact.class);
-            contactObjects.add(contactObject.getValue());
+            JAXBElement<ContactEntry> contactEntry = (JAXBElement<ContactEntry>)unmarshaller.unmarshal(source, ContactEntry.class);
+            Contact contactObject = contactEntry.getValue().getContent().getContact();
+            contactObjects.add(contactObject);
         }
-        HttpSession session = request.getSession();
-        session.setAttribute("accessToke", accessToken);
-        session.setAttribute("contacts", contactObjects);
-        model.addAttribute("contacts", contactObjects);
-        return "contact_list";
+         ResponseEntity<Object> response = new ResponseEntity<Object>(contactObjects, HttpStatus.OK);
+        return  response;
+
     }
+
 }

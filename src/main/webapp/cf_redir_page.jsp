@@ -15,16 +15,23 @@
 		var query = queryParams.join('&');
 		var url = path + "&" + query;
 
+
 //		alert("Oauth login redirection successful ! \n\nRequesting API resource : " + url + "\nusing acess token ...");
 
 		function getList()
 		{
+            $.ajax({ url: url, cache: false , async:false});
 			window.opener.EventTemplate.stepToForm();
+
             window.close();
 		}
 
 	</script>
 </head>
 <body onload="getList()">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script>
+<script src="http://malsup.com/jquery/block/jquery.blockUI.js"></script>
+
 </body>
 </html>

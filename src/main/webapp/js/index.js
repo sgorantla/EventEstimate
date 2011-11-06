@@ -20,7 +20,6 @@ var EventTemplate = {
      */
     init: function() {
         var t = this;
-        t.endPointUrl = "/scui-webapp/campaign/json/createCampaign";
 
         // form submit event listener.
         $("#getStarted").click($.proxy(t.showContactOptions, t));
@@ -77,6 +76,29 @@ var EventTemplate = {
 
     stepToForm : function (e) {
       $("#overlayWin").load("steps/step2.j");
+      $("#overlayWin").find(".close").click(function() {
+               $.unblockUI();
+            });
+//        this.getContacts("userName");
+    },
+
+    getContacts : function(userName) {
+        fbPageDetails = {'userName':userName},
+         returnVal = false,
+         req = $.ajax({
+             async: false,
+             type: "GET",
+             url:  "/eventEstimator/contacts/json.j",
+             data: fbPageDetails,
+             dataType: "json",
+             success: function(data, status, req) {
+                 alert(data);
+             },
+             error: function(data, status, req) {
+                 // nothing to handle here.
+             }
+         });
+
     },
 
     /**

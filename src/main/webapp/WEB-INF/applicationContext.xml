@@ -62,12 +62,5 @@
                   userAuthorizationUri="https://www.facebook.com/dialog/oauth"/>
 
     <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
-    <property name="messageConverters">
-        <list>
-            <bean id="atomFeedHttpMessageConverter" class="org.springframework.http.converter.feed.AtomFeedHttpMessageConverter">
-                <property name="supportedMediaTypes" value="application/atom+xml" />
-            </bean>
-        </list>
-    </property>
     </bean>
 </beans>
