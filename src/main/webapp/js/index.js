@@ -80,6 +80,7 @@ var EventTemplate = {
                $.unblockUI();
             });
 //        this.getContacts("userName");
+//        this.showStats();
     },
 
     getContacts : function(userName) {
@@ -101,6 +102,9 @@ var EventTemplate = {
 
     },
 
+    showStats: function() {
+      $("body").load("steps/step3.j", function(result){});
+    },
     /**
      * Processes a successful http response for create welcome page request.
      *
