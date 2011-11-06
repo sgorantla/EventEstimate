@@ -133,7 +133,7 @@ var EventTemplate = {
          req = $.ajax({
              async: false,
              type: "GET",
-             url:  "/eventEstimator/contacts/json.j",
+             url:  "/contacts/json.j",
              data: fbPageDetails,
              dataType: "json",
              success: function(data, status, req) {
