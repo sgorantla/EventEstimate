@@ -27,6 +27,7 @@
         <label for="category">Food Type:</label>
         <select id="food" name="food">
           <optgroup>
+            <option>-Category-</option>
             <option>Modern American</option>
             <option>Vegetarian (Only)</option>
             <option>Italian</option>
