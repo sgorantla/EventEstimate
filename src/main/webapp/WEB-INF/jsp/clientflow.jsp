@@ -12,7 +12,7 @@
 URL here = new URL(request.getRequestURL().toString());
 
 String userName = request.getParameter("userName");
-String callback = here.getProtocol() + "://" + here.getHost() + (here.getDefaultPort() != here.getPort() ? ":" + here.getPort() : "") + "/cf_redir_page.jsp?userName=" + userName;
+String callback = here.getProtocol() + "://" + here.getHost() + (here.getDefaultPort() != here.getPort() && here.getPort() > 0 ? ":" + here.getPort() : "") + "/cf_redir_page.jsp?userName=" + userName;
 
 String url = new String("https://oauth2.constantcontact.com/oauth2/oauth/siteowner/authorize?client_id=" + request.getAttribute("appId") +
 		"&response_type=token&redirect_uri=" + URLEncoder.encode(callback));
