@@ -3,9 +3,9 @@
         <img class="left ptm" src="images/venue_placeholder.gif">
       <ul class="venue-feature venue-details">
         <li class="venue-title">General Assembly</li>
-        <li class="venue-location bdr-btm">902 BROADWAY<br />NEW YORK, NY 10010</li>
+        <li class="venue-location bdr-btm">Javits Center<br />NEW YORK, NY 10016</li>
         <li class="venue-price bdr-btm">$1099.00</li>
-        <li>Venue Rating   5 Stars</li> 
+        <li>Venue Rating   4 Stars</li>
       </ul>
       </div>
 
@@ -19,11 +19,11 @@
         <!-- Food Options -->
         <ul class="venue-details spot">
           <li class="">
-            <span class="spot-name">JPO Concepts</span>
-            <span class="venue-location right">1.2 Miles</span>
+            <span class="spot-name">Grand Sichuan International</span>
+            <span class="venue-location right">1.5 Miles</span>
           </li>
          	<li class=""><span class="venue-location">New York, NY</span></li>
-			<li> <span class="spot-name">Venue Rating   5 Stars</span></li>           
+			<li> <span class="spot-name">Venue Rating 4 Stars</span></li>
 			<li> <span class="spot-name">See Deals </span></li>           
 			<li> <span class="spot-name">See Reviews and Tips</span></li>           
         </ul>
