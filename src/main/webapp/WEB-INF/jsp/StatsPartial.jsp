@@ -5,7 +5,7 @@
         <li class="venue-title">General Assembly</li>
         <li class="venue-location bdr-btm">902 BROADWAY<br />NEW YORK, NY 10010</li>
         <li class="venue-price bdr-btm">$1099.00</li>
-        <li>Venue Rating</li> 
+        <li>Venue Rating   5 Stars</li> 
       </ul>
       </div>
 
@@ -22,9 +22,10 @@
             <span class="spot-name">JPO Concepts</span>
             <span class="venue-location right">1.2 Miles</span>
           </li>
-          <li class="">
-            <span class="venue-location">New York, NY</span>
-          </li>
+         	<li class=""><span class="venue-location">New York, NY</span></li>
+			<li> <span class="spot-name">Venue Rating   5 Stars</span></li>           
+			<li> <span class="spot-name">See Deals </span></li>           
+			<li> <span class="spot-name">See Reviews and Tips</span></li>           
         </ul>
         <ul class="venue-details mbm">
           <li class="bdr-btm"><span class="venue-title">Transport:</span> <span class="txt-small right">Trains, Buses, Cabs..oh my!</span></li>
