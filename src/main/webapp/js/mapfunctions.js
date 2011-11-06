@@ -4,7 +4,7 @@
  */
 
 
-function GeoAddress(map, address) {
+function GeoSetAddress(map, address) {
 		var geoLocale;
 	  	geocoder.geocode( { 'address': address}, function(results, status) {
 	    if (status == google.maps.GeocoderStatus.OK) {
