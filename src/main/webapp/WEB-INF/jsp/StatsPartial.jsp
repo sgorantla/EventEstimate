@@ -36,7 +36,7 @@
             <span class="venue-location right">.7 Miles</span>
           </li>
           <li class="">
-            <span class="venue-location">8th Ave. <br />New York, NY 10017</span>
+            <span class="venue-location">8th Ave. Ave<br />New York, NY 10017</span>
           </li>
         </ul>
         <ul class="venue-details mbm">
