@@ -83,4 +83,9 @@ public class StepsController {
     }
 
 
+    @RequestMapping(value="/step3.j", method= RequestMethod.GET)
+    protected String stepToStats(Model model ,HttpServletRequest request) throws Exception {
+        return "StatsPartial";
+    }
+
 }
