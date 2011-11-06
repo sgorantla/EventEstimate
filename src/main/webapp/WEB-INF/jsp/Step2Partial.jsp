@@ -18,12 +18,22 @@
         <select id="category" name="category">
           <optgroup>
             <option>-Category-</option>
+            <option>Awesome Hackathon</option>
+            <option>Conference</option>
+            <option>Company Holiday Party</option>
+            <option>Community Event</option>
           </optgroup>
         </select>
         <label for="category">Food Type:</label>
         <select id="food" name="food">
           <optgroup>
-            <option>-Food Type-</option>
+            <option>-Category-</option>
+            <option>Modern American</option>
+            <option>Vegetarian (Only)</option>
+            <option>Italian</option>
+            <option>Asian Fusion</option>
+            <option>Chinese</option>
+            <option>French</option>
           </optgroup>
         </select>
       <div class="venue">
