@@ -49,7 +49,7 @@
   </bean>
     
   <bean id="oauth2TokenServices" class="org.springframework.security.oauth2.consumer.token.InMemoryOAuth2ClientTokenServices"/>
-<oauth:resource id="prod" type="authorization_code" clientId="SSbfe53385-0b89-4a8c-bc4d-e2753f991580" clientSecret="371fc2166fc849f59d8c30057b534696"
+<oauth:resource id="prod" type="authorization_code" clientId="bfe53385-0b89-4a8c-bc4d-e2753f991580" clientSecret="371fc2166fc849f59d8c30057b534696"
            accessTokenUri="https://oauth2.constantcontact.com/oauth2/oauth/token"
                  userAuthorizationUri="https://oauth2.constantcontact.com/oauth2/oauth/siteowner/authorize"/>
 
