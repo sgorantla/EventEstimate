@@ -37,6 +37,18 @@ var EventTemplate = {
 	    EventTemplate.map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
 	//     setVenueLocationMarker(map, venueLocations);
 	//     setContactMarkers(map, contactLocations);
+        setVenueLocationMarker(EventTemplate.map, "655 West 34th St, New York City");
+        var contactsMock = [ ];
+        contactsMock.push("902 broadway, new york");
+        contactsMock.push("122 Hudson Street, new york");
+        contactsMock.push("688 Avenue of the Americas, new york");
+//        contactsMock.push("98 7th Avenue, new york");
+        contactsMock.push("98 8th Avenue, new york");
+       for (var i=0; i < contactsMock.length; i++) {
+        	  GeoSetAddress(EventTemplate.map, contactsMock[i]);
+        }
+       GeoSetRestaurant(EventTemplate.map, "229 9th Ave, New york");
+       GeoSetTrain(EventTemplate.map, "8th Ave & 31st St, New York");
   },
   
     /**
@@ -105,7 +117,7 @@ var EventTemplate = {
       		
       	 	EventTemplate.initializeMap();
       		EventTemplate.showStats();
-      		EventTemplate.getContacts();
+//      		EventTemplate.getContacts();
       		
       	 	$(".callout").hide();
       	 	$("#map_canvas").hide();
@@ -146,10 +158,9 @@ var EventTemplate = {
              	}
              },
              error: function(data, status, req) {
-                 // nothing to handle here.
+//                continue,
              }
          });
-
     },
     
 	getVenue : function() {
